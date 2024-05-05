@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import Loader from "../components/Loader";
 
 export default function Post() {
   const [post, setPost] = useState(null);
+  const [loader, setLoader] = useState(false);
   const { slug } = useParams();
   const navigate = useNavigate();
 
@@ -16,9 +18,16 @@ export default function Post() {
 
   useEffect(() => {
     if (slug) {
+      setLoader(true);
       appwriteService.getPost(slug).then((post) => {
-        if (post) setPost(post);
-        else navigate("/");
+        if (post) {
+          setLoader(false);
+          setPost(post);
+        } 
+        else {
+          setLoader(false);
+          navigate("/");
+        }
       });
     } else navigate("/");
   }, [slug, navigate]);
@@ -31,6 +40,14 @@ export default function Post() {
       }
     });
   };
+
+  if (loader) {
+    return (
+      <div className='flex justify-center items-center'>
+        <Loader/>
+      </div>
+    )
+  }
 
   return post ? (
     <div className="py-8">
