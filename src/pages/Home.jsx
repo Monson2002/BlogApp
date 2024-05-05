@@ -1,45 +1,49 @@
 import React, { useEffect, useState } from 'react'
-import appwriteService from "../appwrite/config";
 import { Container, PostCard } from '../components'
+import appwriteService from "../appwrite/config";
+import Loader from '../components/Loader';
 
 function Home() {
   const [posts, setPosts] = useState([])
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
+    setLoader(true);
     appwriteService.getPosts().then((posts) => {
       if (posts) {
+        setLoader(false);
         setPosts(posts.documents)
       }
+      setLoader(false);
     })
   }, [])
 
-  if (posts.length === 0) {
+  if (loader) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
-        <Container>
-          <div className="flex flex-wrap">
-            <div className="p-2 w-full">
-              <h1 className="text-2xl font-bold">
-                Login to read posts
-              </h1>
-            </div>
-          </div>
-        </Container>
+      <div className='flex justify-center items-center'>
+        <Loader/>
       </div>
     )
   }
+
   return (
     <div className='w-full py-8'>
       <Container>
         <div className='flex justify-center items-center gap-12'>
-          {posts && posts.length && posts.length > 0 
+          {posts && posts.length 
           ? posts.map((post) => (
             <div key={post.$id} className=''>
               <PostCard {...post} />
             </div>
           ))
+          : posts.length === 0 
+          ? (
+            <div className='flex justify-center items-center text-slate-800 text-2xl'>
+              Login to Read Posts...
+            </div>
+          )
           : (
-            <div className='text-2xl font-bold'>No posts to read...</div>
+            <Loader/>
           )}
         </div>
       </Container>
