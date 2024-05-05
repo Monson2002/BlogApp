@@ -29,6 +29,7 @@ function Login() {
       setLoader(false);
       setError(error.message)
     }
+    window.location.reload();
   }
 
   if (loader) {
