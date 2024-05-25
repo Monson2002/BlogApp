@@ -27,11 +27,11 @@ function AllPosts() {
   return (
     <div className='w-full py-8'>
       <Container>
-        <div className='flex justify-center items-center gap-12'>
+        <div className='gap-12'>
           {posts && posts.length && posts.length > 0
           ? (
             posts.map((post) => (
-              <div key={post.$id} className=''>
+              <div key={post.$id} className='grid grid-cols-1'>
                 <PostCard {...post} />
               </div>
             ))

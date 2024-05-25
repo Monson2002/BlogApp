@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.11.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@tinymce/tinymce-react": "^4.3.0",
     "appwrite": "^13.0.0",
+    "axios": "^1.7.2",
     "html-react-parser": "^4.2.2",
+    "markdown-to-jsx": "^7.4.7",
+    "marked": "^12.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.46.1",

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Container, Logo, LogoutBtn } from '../index'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import authService from '../../appwrite/auth'
@@ -49,19 +48,19 @@ function Header() {
   }
 
   return (
-    <header className='py-4 shadow bg-slate-900'>
+    <header className='py-1 shadow bg-slate-900'>
       <Container>
         <nav className='flex justify-between items-center'>
-          <div className='flex justify-center items-center m-4'>
+          <div className='flex justify-center items-center mx-4'>
             <Logo />
           </div>
           <ul className='flex'>
             {navItems.map((item) =>
               item.active ? (
-                <li key={item.name} className='mx-2'>
+                <li key={item.name} className='m-1'>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className='inline-bock px-6 py-2 duration-200 text-xl text-white hover:text-slate-900  hover:bg-blue-100 rounded-full w-full'
+                    className='inline-bock px-6 py-1 duration-200 text-xl text-white hover:text-slate-900  hover:bg-blue-100 rounded-sm w-full'
                   >{item.name}</button>
                 </li>
               ) : null
@@ -72,11 +71,6 @@ function Header() {
               </li>
             )}
           </ul>
-          {/* {userName.length > 0 
-          ? (<div className='flex justify-center items-center text-white text-xl absolute right-20'>
-            Welcome {userName}
-          </div>)
-          : null} */}
         </nav>
       </Container>
     </header>
