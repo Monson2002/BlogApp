@@ -29,7 +29,7 @@ function Home() {
   return (
     <div className='w-full py-8'>
       <Container>
-        <div className='grid grid-cols-3 gap-12'>
+        <div className='grid grid-cols-1 gap-12'>
           {posts && posts.length 
           ? posts.map((post) => (
             <div key={post.$id} className=''>
@@ -39,11 +39,7 @@ function Home() {
           : posts.length === 0 
           ? (
             <div className='flex justify-center items-center text-slate-800 text-2xl'>
-            </div>
-            <div className='flex justify-center items-center text-slate-800 text-2xl'>
               Login to Read Posts...
-            </div>
-            <div className='flex justify-center items-center text-slate-800 text-2xl'>
             </div>
           )
           : (
