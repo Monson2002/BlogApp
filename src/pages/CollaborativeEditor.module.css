@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 12px;
+  background: #fff;
+  width: 80vw;
+  height: 70vh;
+  color: #111827;
+}
+
+.editor {
+  border-radius: inherit;
+  flex-grow: 1;
+  width: 80vw;
+  height: 70vh;
+}
+
+.editor:focus {
+  outline: none;
+}
+
+.editorContainer {
+  position: relative;
+  padding: 1em;
+  height: 70vh;
+}
+
+.editor p {
+  margin: 1em 0;
+}

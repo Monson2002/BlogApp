@@ -35,6 +35,16 @@ function Header() {
       slug: "/add-post",
       active: authStatus,
     },
+    {
+      name: "Collab",
+      slug: "/collab",
+      active: authStatus,
+    },
+    {
+      name: "Stats",
+      slug: "/stats",
+      active: authStatus,
+    },
   ]
 
   useEffect(() => {
@@ -66,7 +76,7 @@ function Header() {
               ) : null
             )}
             {authStatus && (
-              <li>
+              <li className='flex justify-center items-center'>
                 <LogoutBtn />
               </li>
             )}

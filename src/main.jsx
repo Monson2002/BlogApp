@@ -13,6 +13,8 @@ import Signup from './pages/Signup'
 import EditPost from "./pages/EditPost";
 import Post from "./pages/Post";
 import AllPosts from "./pages/AllPosts";
+import Collab from './pages/Collab.jsx'
+import Stats from './pages/Stats.jsx'
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,24 @@ const router = createBrowserRouter([
           <AuthLayout authentication>
             {" "}
             <AddPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/collab",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <Collab />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/stats",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <Stats />
           </AuthLayout>
         ),
       },
