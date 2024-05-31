@@ -68,11 +68,14 @@ function SlateEditor({ sharedType }) {
   }, [editor]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.editorContainer}>
-        <Slate editor={editor} initialValue={[emptyNode]}>
-          <Editable className={styles.editor} placeholder="Start typing here…" />
-        </Slate>
+    <div className="block">
+      <h2 className="text-2xl font-bold m-2">Collab Tool</h2>
+      <div className={styles.container}>
+        <div className={styles.editorContainer}>
+          <Slate editor={editor} initialValue={[emptyNode]}>
+            <Editable className={styles.editor} placeholder="Start typing here…" />
+          </Slate>
+        </div>
       </div>
     </div>
   );
