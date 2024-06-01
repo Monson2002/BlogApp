@@ -8,7 +8,7 @@ const client = new Client()
 
 const users = new Users(client);
 
-const usersCount = await users.list(
+const usersCount = users.list(
     // [], // queries (optional)
     // '<SEARCH>' // search (optional)
 );
