@@ -65,8 +65,8 @@ function Stats() {
     dispatch({ type: 'CURRENT_USER', username: name, email: email })
   }
 
-  const getAllUsers = () => {
-    const response = usersData;
+  const getAllUsers = async () => {
+    const response = await usersData;
     const totalUsers = response.total;
     const usersDetails = response.users;
     dispatch({ type: 'ALL_USERS', totalUsers: totalUsers, usersDetails: usersDetails })
@@ -76,9 +76,10 @@ function Stats() {
     await getAllUsers();
     await getCurrentUser();
     await getBlogCount();
-    dispatch({ type: 'LOADER', loader: false })
   }
-
+  
+  dispatch({ type: 'LOADER', loader: false })
+  
   useEffect(() => {
     fetchDetails();
   }, [])
