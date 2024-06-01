@@ -91,6 +91,18 @@ export class Service {
     }
   }
 
+  async listDocuments() {
+    try {
+      return await this.databases.listDocuments(
+        conf.appwriteDatabaseId, // databaseId
+        conf.appwriteCollectionId, // collectionId
+        // [] // queries (optional)
+      );
+    } catch (error) {
+      console.log("Appwrite serive :: ListDocuments :: error", error);
+    }
+  }
+
   // file upload service
 
   async uploadFile(file) {

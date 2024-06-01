@@ -8,6 +8,7 @@ import { withYjs, YjsEditor } from "@slate-yjs/core";
 import * as Y from "yjs";
 import { useRoom } from "../../liveblocks.config";
 import styles from "./CollaborativeEditor.module.css";
+import Loader from "../components/Loader";
 
 export function CollaborativeEditor() {
   const room = useRoom();
@@ -33,7 +34,7 @@ export function CollaborativeEditor() {
   }, [room]);
 
   if (!connected || !sharedType || !provider) {
-    return <div>Loading…</div>;
+    return <Loader/>
   }
 
   return <SlateEditor sharedType={sharedType} />;

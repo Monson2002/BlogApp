@@ -82,7 +82,7 @@ export default function PostForm({ post }) {
     e.preventDefault();
     setLoading(true);
     const response = await axios({
-      url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${import.meta.env.VITE_APPWRITE_API_KEY}`,
+      url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`,
       method: 'post',
       data: {
         contents: [

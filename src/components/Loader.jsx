@@ -3,7 +3,7 @@ import { Audio } from 'react-loader-spinner';
 
 function Loader() {
   return (
-    <div>
+    <div className='flex justify-center items-center'>
       <Audio
         height="80"
         width="80"
