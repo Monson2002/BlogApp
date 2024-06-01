@@ -72,10 +72,10 @@ function Stats() {
     dispatch({ type: 'ALL_USERS', totalUsers: totalUsers, usersDetails: usersDetails })
   }
 
-  const fetchDetails = () => {
-    getAllUsers();
-    getCurrentUser();
-    getBlogCount();
+  const fetchDetails = async () => {
+    await getAllUsers();
+    await getCurrentUser();
+    await getBlogCount();
     dispatch({ type: 'LOADER', loader: false })
   }
 
