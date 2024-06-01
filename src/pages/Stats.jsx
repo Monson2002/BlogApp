@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Container } from '../components'
 import service from '../appwrite/config'
 import authService from '../appwrite/auth';
@@ -65,17 +65,17 @@ function Stats() {
     dispatch({ type: 'CURRENT_USER', username: name, email: email })
   }
 
-  const getAllUsers = async () => {
-    const response = await usersData;
+  const getAllUsers = () => {
+    const response = usersData;
     const totalUsers = response.total;
     const usersDetails = response.users;
     dispatch({ type: 'ALL_USERS', totalUsers: totalUsers, usersDetails: usersDetails })
   }
 
-  const fetchDetails = async () => {
-    await getAllUsers();
-    await getCurrentUser();
-    await getBlogCount();
+  const fetchDetails = () => {
+    getAllUsers();
+    getCurrentUser();
+    getBlogCount();
     dispatch({ type: 'LOADER', loader: false })
   }
 
