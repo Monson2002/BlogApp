@@ -54,7 +54,6 @@ function Header() {
   const fetchUserName = async () => {
     const userResponse = await authService.getCurrentUser()
     setUserName(userResponse.name);
-    console.log(userResponse.name);
   }
 
   return (
