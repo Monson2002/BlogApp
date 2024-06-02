@@ -41,6 +41,8 @@ const initialState = {
 
 function Stats() {
 
+  console.log(usersCount());
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const getBlogCount = async () => {
@@ -86,7 +88,7 @@ function Stats() {
               <p className='text-4xl font-semibold m-4'>Users: {usersCount.total}</p>
             </div>
             <div className='grid grid-cols-2 gap-8 overflow-scroll overflow-x-hidden scroll-smooth' style={{ 'height': 'calc(100vh - 40vh)' }}>
-              {usersCount.users.map((user, index) => {
+              {/* {usersCount.users.map((user, index) => {
                 return (
                   <div key={index} className='bg-slate-300 rounded-md text-left p-4 m-4 border-red-300 hover:scale-105 transition-all'>
                     <p className='font-semibold'>Name: <span className='font-normal'>{user.name}</span></p>
@@ -94,7 +96,7 @@ function Stats() {
                     <p className='font-semibold'>Registered On: <span className='font-normal'>{new Date(user.$createdAt).toString()}</span></p>
                   </div>
                 )
-              })}
+              })} */}
             </div>
           </div>
         </Container>}
