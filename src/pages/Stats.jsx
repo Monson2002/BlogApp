@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Container } from '../components'
 import service from '../appwrite/config'
 import authService from '../appwrite/auth';
@@ -41,8 +41,8 @@ const initialState = {
 
 function Stats() {
 
-  console.log(usersCount());
-
+  const [userCount, setUserCount] = useState([]);
+  const [gotUsers, setGotUsers] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const getBlogCount = async () => {
@@ -67,6 +67,20 @@ function Stats() {
     fetchDetails();
   }, [])
 
+  const fetchData = async () => {
+    try {
+      const response = await usersCount()
+      setUserCount(response)
+      setGotUsers(!gotUsers);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  useEffect(() =>{
+    fetchData();
+  }, [])
+
   return (
     <div className=''>
       {state.loader && <Loader />}  
@@ -79,16 +93,15 @@ function Stats() {
                 <p className='text-2xl'>Registered Email</p>
                 <p className='text-2xl'>{state.email}</p>
               </div>
-
             </div>
           </div>
           <div className='w-2/3 h-[75vh]'>
             <div className='flex justify-between mx-6'>
               <p className='text-4xl font-semibold m-4'>Blogs: {state.blogCount}</p>
-              <p className='text-4xl font-semibold m-4'>Users: {usersCount.total}</p>
+              <p className='text-4xl font-semibold m-4'>Users: {gotUsers && userCount.total}</p>
             </div>
             <div className='grid grid-cols-2 gap-8 overflow-scroll overflow-x-hidden scroll-smooth' style={{ 'height': 'calc(100vh - 40vh)' }}>
-              {/* {usersCount.users.map((user, index) => {
+              {gotUsers && userCount.users.map((user, index) => {
                 return (
                   <div key={index} className='bg-slate-300 rounded-md text-left p-4 m-4 border-red-300 hover:scale-105 transition-all'>
                     <p className='font-semibold'>Name: <span className='font-normal'>{user.name}</span></p>
@@ -96,7 +109,7 @@ function Stats() {
                     <p className='font-semibold'>Registered On: <span className='font-normal'>{new Date(user.$createdAt).toString()}</span></p>
                   </div>
                 )
-              })} */}
+              })}
             </div>
           </div>
         </Container>}
