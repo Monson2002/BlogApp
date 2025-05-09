@@ -54,7 +54,7 @@ export default function Post() {
       <Container className='flex'>
         <div className="w-screen flex flex-col justify-center items-center m-16 relative border border-solid boder-2 border-white bg-white p-8">
           <img
-            src={appwriteService.getFilePreview(post.featuredImage)}
+            src={appwriteService.getFileView(post.featuredImage)}
             alt={post.title}
             className="rounded-xl w-80"
           />
