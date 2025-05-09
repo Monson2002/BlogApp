@@ -105,7 +105,7 @@ function Stats() {
                 return (
                   <div key={index} className='bg-slate-300 rounded-md text-left p-4 m-4 border-red-300 hover:scale-105 transition-all'>
                     <p className='font-semibold'>Name: <span className='font-normal'>{user.name}</span></p>
-                    <p className='font-semibold'>E-mail: <span className='font-normal'>{user.name}</span></p>
+                    <p className='font-semibold'>E-mail: <span className='font-normal'>{user.email}</span></p>
                     <p className='font-semibold'>Registered On: <span className='font-normal'>{new Date(user.$createdAt).toString()}</span></p>
                   </div>
                 )
